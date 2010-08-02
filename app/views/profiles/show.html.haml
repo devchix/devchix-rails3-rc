@@ -1,0 +1,25 @@
+%p
+  %b User:
+  = @profile.user_id
+%p
+  %b First name:
+  = @profile.first_name
+%p
+  %b Last name:
+  = @profile.last_name
+%p
+  %b Country:
+  = @profile.country
+%p
+  %b Location:
+  = @profile.location
+%p
+  %b Bio:
+  = @profile.bio
+%p
+  %b Birthday:
+  = @profile.birthday
+
+= link_to 'Edit', edit_profile_path(@profile)
+\|
+= link_to 'Back', profiles_path

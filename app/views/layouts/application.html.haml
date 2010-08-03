@@ -1,0 +1,45 @@
+!!!
+%html
+  %head
+    %title
+      Devchix
+    = stylesheet_link_tag :all 
+    = javascript_include_tag :defaults 
+    = stylesheet_link_tag 'ui-lightness/jquery-ui-1.8.custom.css'
+    
+    =javascript_include_tag 'application'
+    = csrf_meta_tag 
+
+  %body
+    #header
+      .container_16.clearfix
+        #headline
+          %h2 DevChix 
+        #menu
+          .grid_10.alpha
+            =link_to "Home", root_url
+            - if user_signed_in?
+              |
+              =link_to "Profiles", profiles_url
+              |
+              =link_to  'Logout', destroy_user_session_url
+          .grid_5.omega.logged_in_as
+            - if user_signed_in?
+              Logged in as:&nbsp;
+              =current_user.email
+            - else 
+              |
+              =link_to  'Login', user_session_url
+          .flash.grid_16
+            %p{:style => "color: green"}
+              =flash[:notice]
+            %p{:style => "color: red"}
+              = flash[:alert] 
+    #main
+      #content.container_16.clearfix
+        =yield
+    #footer
+      #footer_content.container_16
+        %p
+          &copy;DevChix 2010
+

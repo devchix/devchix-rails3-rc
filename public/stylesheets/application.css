@@ -119,6 +119,11 @@ h2 {
 
 }
 
+.flash {
+  color: black;
+  background-color: #FFBF38;
+}
+
 .clear  {
   clear: both;
 }

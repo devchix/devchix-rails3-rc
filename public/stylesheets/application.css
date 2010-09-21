@@ -68,7 +68,7 @@ h2 {
   color:white;
   font-weight:bold;
   height:2em;
-  padding: 10px 0 0 0;
+  padding: 10px 0 0 10px;
   border: 3px sold #93680E;
   border-top: 2px solid #0D4AB2;
   border-bottom: 5px solid #0D4AB2;
@@ -110,8 +110,12 @@ h2 {
   padding-top:5px;
 }
 
-#content {
+#contents {
   background-color: #FFBF38;
+}
+
+#content {
+ padding: 10px;
 }
 
 #new_task {

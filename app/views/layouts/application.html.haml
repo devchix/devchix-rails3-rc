@@ -20,7 +20,9 @@
             =link_to "Home", root_url
             - if user_signed_in?
               |
-              =link_to "Profiles", profiles_url
+              =link_to "All Profiles", profiles_url
+              |
+              =link_to "My Profile", profile_path(current_user.id)
               |
               =link_to  'Logout', destroy_user_session_url
           .grid_5.omega.logged_in_as
@@ -30,14 +32,15 @@
             - else 
               |
               =link_to  'Login', user_session_url
-          .flash.grid_16
-            %p{:style => "color: green"}
-              =flash[:notice]
-            %p{:style => "color: red"}
-              = flash[:alert] 
-  #main
-      #content.container_16.clearfix
-        =yield
+    #main
+      .flash.container_16.clearfix
+        %p{:style => "color: green"}
+          =flash[:notice]
+        %p{:style => "color: red"}
+          = flash[:alert] 
+      #contents.container_16.clearfix
+        #content
+          =yield
     #footer
       #footer_content.container_16
         %p

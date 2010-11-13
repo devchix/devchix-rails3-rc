@@ -27,5 +27,14 @@
   .field
     = f.label :birthday
     = f.date_select :birthday
-  .actions
+   .field
+    = f.label :linked_in
+    = f.text_field :text_field
+   .field
+    = f.label :twitter
+    = f.text_field :text_field
+   .field
+    = f.label :facebook
+    = f.text_field :text_field
+    .actions
     = f.submit 'Save'

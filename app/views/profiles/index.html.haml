@@ -3,29 +3,21 @@
 %table
   %tr
     %th User
-    %th First name
-    %th Last name
+    %th Name
     %th Country
     %th Location
     %th Bio
     %th Birthday
-    %th
-    %th
-    %th
+    %th{:colspan => 3}
 
   - @profiles.each do |profile|
     %tr
-      %td= profile.user_id
-      %td= profile.first_name
-      %td= profile.last_name
+      %td= link_to profile.name, profile
       %td= profile.country
       %td= profile.location
       %td= profile.bio
       %td= profile.birthday
       %td= link_to 'Show', profile
-      %td= link_to 'Edit', edit_profile_path(profile)
-      %td= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New profile', new_profile_path

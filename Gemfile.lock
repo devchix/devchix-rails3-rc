@@ -92,6 +92,7 @@ GEM
     rspec-rails (2.0.0.beta.19)
       rspec (= 2.0.0.beta.19)
       webrat (>= 0.7.2.beta.1)
+    simple_form (1.2.2)
     sqlite3-ruby (1.2.5)
     term-ansicolor (1.0.5)
     thor (0.14.0)
@@ -118,5 +119,6 @@ DEPENDENCIES
   rails3-generators
   rcov
   rspec-rails (>= 2.0.0.beta.19)
+  simple_form
   sqlite3-ruby (= 1.2.5)
   webrat (>= 0.7.2.beta.1)

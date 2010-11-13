@@ -1,15 +1,13 @@
 class ProfilesController < ApplicationController
+  respond_to :html
+
   before_filter :authenticate_user!
 
   # GET /profiles
   # GET /profiles.xml
   def index
     @profiles = Profile.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @profiles }
-    end
+    respond_with(@profiles)
   end
 
   # GET /profiles/1
@@ -23,6 +21,9 @@ class ProfilesController < ApplicationController
     redirect_to root_path
   end
 
+    @profile = Profile.find_by_user_id(params[:id])
+    respond_with(@profile)
+  end
 
   # GET /profiles/1/edit
   def edit
@@ -34,22 +35,17 @@ class ProfilesController < ApplicationController
     Rails.logger.info("Tried to access profile id #{params[:id]} and was not found")
     flash[:notice] = "You are not authorized to see that profile"
     redirect_to root_path
+    respond_with(@profile)
   end
 
   # PUT /profiles/1
-  # PUT /profiles/1.xml
   def update
     @profile = Profile.find(params[:id])
 
-    respond_to do |format|
-      if @profile.update_attributes(params[:profile])
-        format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
-      end
+    if @profile.update_attributes(params[:profile])
+      flash[:notice] = 'Profile was successfully updated.'
     end
+    respond_with(@profile, :location => profiles_url)
   end
 
 end

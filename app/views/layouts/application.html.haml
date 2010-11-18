@@ -20,11 +20,9 @@
             =link_to "Home", root_url
             - if user_signed_in?
               |
-              =link_to "My Profile", current_user.profile
+              =link_to "My Profile", profile_path(current_user[:id])
               |
               =link_to "Users", profiles_url
-              |
-              =link_to "My Profile", profile_path(current_user.id)
               |
               =link_to  'Logout', destroy_user_session_url
           .grid_5.omega.logged_in_as

@@ -9,6 +9,7 @@ gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3'
 gem 'rails3-generators'
 gem 'haml'
 gem 'devise', '1.1.rc2'
+gem 'simple_form'
 
 group :development do
   gem 'rcov'

@@ -13,16 +13,12 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.xml
   def show
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find_by_user_id(params[:id])
 
   rescue ActiveRecord::RecordNotFound => e
     Rails.logger.info("Tried to access profile id #{params[:id]} and was not found")
     flash[:notice] = "You are not authorized to see that profile"
     redirect_to root_path
-  end
-
-    @profile = Profile.find_by_user_id(params[:id])
-    respond_with(@profile)
   end
 
   # GET /profiles/1/edit
@@ -35,7 +31,6 @@ class ProfilesController < ApplicationController
     Rails.logger.info("Tried to access profile id #{params[:id]} and was not found")
     flash[:notice] = "You are not authorized to see that profile"
     redirect_to root_path
-    respond_with(@profile)
   end
 
   # PUT /profiles/1

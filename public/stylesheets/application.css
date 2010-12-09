@@ -1,5 +1,14 @@
-body { background-color: #4085FF; color: #333; }
+body {
+    background: none repeat scroll 0 0 #333333;
+}
 
+#content {
+    background: url("/images/content_bg_lg.png") no-repeat scroll right top transparent;
+    margin-top: 0;
+    min-height: 1500px;
+    overflow: visible;
+    padding: 45px 0 0 0;
+}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -17,40 +26,33 @@ a { color: #000; }
 a:visited { color: #666; }
 a:hover { color: #fff; background-color:#000; }
 
-.fieldWithErrors {
+.field_with_errors label {
   padding: 2px;
   background-color: red;
   display: table;
 }
 
-#errorExplanation {
-  width: 400px;
-  border: 2px solid red;
+#error_explanation {
   padding: 7px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
+  color:red;
+  border: 0;
+  background-color: white;
 }
 
-#errorExplanation h2 {
-  text-align: left;
+#error_explanation h2{
+  color:red !important;
   font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  background-color: #c00;
-  color: #fff;
 }
 
-#errorExplanation p {
+#error_explanation p {
   color: #333;
   margin-bottom: 0;
   padding: 5px;
 }
 
-#errorExplanation ul li {
+#error_explanation ul li {
   font-size: 12px;
-  list-style: square;
+  list-style: none;
 }
 
 h2 {
@@ -64,14 +66,14 @@ h2 {
 }
 
 #menu {
-  background-color: #4883E2;
+  background-color: #84E907;
   color:white;
   font-weight:bold;
   height:2em;
   padding: 10px 0 0 10px;
   border: 3px sold #93680E;
-  border-top: 2px solid #0D4AB2;
-  border-bottom: 5px solid #0D4AB2;
+  border-top: 2px solid #fff;
+  border-bottom: 5px solid #fff;
 }
 
 #menu a {
@@ -99,7 +101,7 @@ h2 {
 }
 
 #content h2 {
-  color: #93680E;
+  color: #84E907;
   font-size:2em;
   text-align: left;
   margin: 0;
@@ -110,20 +112,12 @@ h2 {
   padding-top:5px;
 }
 
-#contents {
-  background-color: #FFBF38;
-}
-
-#content {
- padding: 10px;
-}
-
 #new_task {
   padding: 10px 0 0 20px;
 
 }
 
-.flash {
+#flash_content {
   color: black;
   background-color: #FFBF38;
 }

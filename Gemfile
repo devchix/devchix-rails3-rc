@@ -10,6 +10,7 @@ gem 'rails3-generators'
 gem 'haml'
 gem 'devise', '1.1.rc2'
 gem 'simple_form'
+gem "will_paginate", "~> 3.0.pre2"
 
 group :development do
   gem 'rcov'

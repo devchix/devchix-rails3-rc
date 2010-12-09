@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.xml
   def index
-    @profiles = Profile.all
+    @profiles = Profile.paginate :page => params[:page], :order => 'last_name, first_name ASC'
     respond_with(@profiles)
   end
 

@@ -9,7 +9,7 @@
 
   - @profiles.each do |profile|
     %tr
-      %td= link_to profile.name, profile_path(profile.user_id)
+      %td= link_to full_name(profile), profile_path(profile.user_id)
       %td= profile.country
       %td= profile.location
       %td= profile.birthday

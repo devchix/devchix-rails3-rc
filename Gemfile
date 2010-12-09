@@ -13,6 +13,7 @@ gem 'simple_form'
 
 group :development do
   gem 'rcov'
+  gem 'faker'
 end
 
 group :development, :test do

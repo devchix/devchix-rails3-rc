@@ -129,3 +129,9 @@ h2 {
 .clearfix {
   display:block;
 }
+
+table { 
+border-spacing: 5px;
+border-collapse:separate;
+table-layout: auto;
+}

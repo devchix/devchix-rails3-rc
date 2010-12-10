@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.xml
   def index
-    @profiles = Profile.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    @profiles = Profile.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 20, :page => params[:page])
     respond_with(@profiles)
   end
 

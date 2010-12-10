@@ -1,11 +1,14 @@
 %h1 Listing profiles
 
-= form_tag profiles_path, :method => 'get' do 
+= form_tag profiles_path, :method => 'get', :id => 'search_form' do 
   %p
     = hidden_field_tag :direction, params[:direction] 
     = hidden_field_tag :sort, params[:sort] 
-    = text_field_tag :search, params[:search] 
+    = text_field_tag :search_name, params[:search_name], {:id => 'name_search',:value => 'name', :class => 'greyed'} 
+    = text_field_tag :search_location, params[:search_location], {:id => 'location_search',:value => 'location', :class => 'greyed'} 
     = submit_tag "Search", :name => nil 
+    %a{:href => "/profiles"}
+      Start Over
 
 = will_paginate @posts
 

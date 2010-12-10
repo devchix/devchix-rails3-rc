@@ -6,3 +6,7 @@ rake devchix:fakeuser NUM=20
 # Make 1 fake user
 rake devchix:fakeuser 
 
+
+# Resources
+* used to do sorting, pagination, for profiles
+  http://asciicasts.com/episodes/240-search-sort-paginate-with-ajax

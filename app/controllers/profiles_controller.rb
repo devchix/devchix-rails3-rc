@@ -6,7 +6,14 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.xml
   def index
-    @profiles = Profile.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 20, :page => params[:page])
+    if params[:search_name] != "name" && !params[:search_name].blank?
+      field = "name"
+      value = params[:search_name]
+    elsif params[:search_location] != "name" && !params[:search_location].blank?
+      field = "location"
+      value = params[:search_location]
+    end
+    @profiles = Profile.search(field, value).order(sort_column + ' ' + sort_direction).paginate(:per_page => 20, :page => params[:page])
     respond_with(@profiles)
   end
 
@@ -45,7 +52,7 @@ class ProfilesController < ApplicationController
 
   private  
   def sort_column  
-    params[:sort] || "name"  
+    params[:sort] || "last_name"  
   end  
      
   def sort_direction  

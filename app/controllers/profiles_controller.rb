@@ -1,12 +1,12 @@
 class ProfilesController < ApplicationController
   respond_to :html
-
+  helper_method :sort_column, :sort_direction  
   before_filter :authenticate_user!
 
   # GET /profiles
   # GET /profiles.xml
   def index
-    @profiles = Profile.paginate :page => params[:page], :order => 'last_name, first_name ASC'
+    @profiles = Profile.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     respond_with(@profiles)
   end
 
@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
 
   rescue ActiveRecord::RecordNotFound => e
     Rails.logger.info("Tried to access profile id #{params[:id]} and was not found")
-    flash[:notice] = "You are not authorized to see that profile"
+    flash[:notice] = "You are not authorized to modify that profile"
     redirect_to root_path
   end
 
@@ -29,7 +29,7 @@ class ProfilesController < ApplicationController
     raise ActiveRecord::RecordNotFound unless @profile.user_id == current_user[:id] #or admin
   rescue ActiveRecord::RecordNotFound => e
     Rails.logger.info("Tried to access profile id #{params[:id]} and was not found")
-    flash[:notice] = "You are not authorized to see that profile"
+    flash[:notice] = "You are not authorized to modify that profile"
     redirect_to root_path
   end
 
@@ -42,5 +42,14 @@ class ProfilesController < ApplicationController
     end
     respond_with(@profile, :location => profiles_url)
   end
+
+  private  
+  def sort_column  
+    params[:sort] || "name"  
+  end  
+     
+  def sort_direction  
+    params[:direction] || "asc"  
+  end  
 
 end

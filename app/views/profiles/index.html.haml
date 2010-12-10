@@ -1,19 +1,25 @@
 %h1 Listing profiles
 
+= form_tag profiles_path, :method => 'get' do 
+  %p
+    = hidden_field_tag :direction, params[:direction] 
+    = hidden_field_tag :sort, params[:sort] 
+    = text_field_tag :search, params[:search] 
+    = submit_tag "Search", :name => nil 
+
 = will_paginate @posts
 
 %table
   %tr
-    %th Name
-    %th Country
-    %th Location
-    %th Birthday
-
-  - @profiles.each do |profile|
-    %tr
-      %td= link_to full_name(profile), profile_path(profile.user_id)
-      %td= profile.country
-      %td= profile.location
-      %td= profile.birthday
+    %th 
+      = sortable('last_name', 'Name')
+    %th
+      = sortable('country')
+    %th
+      = sortable('location')
+    %th
+      = sortable('birthday')
+  #products
+    = render 'profiles'
 
 %br
